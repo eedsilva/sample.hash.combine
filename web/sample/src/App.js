@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import logo from "./telos.png";
 import "./App.css";
-import ScatterBridge  from "./scatterBrigde";
+import ScatterBridge  from "./scatterBridge";
 import crypto from 'crypto-js';
 
 class App extends Component {
