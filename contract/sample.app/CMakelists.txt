@@ -1,0 +1,11 @@
+add_contract(sample.app sample.app ${CMAKE_CURRENT_SOURCE_DIR}/src/sample.app.cpp)
+
+target_compile_options(sample.app.wasm PUBLIC -R${CMAKE_CURRENT_SOURCE_DIR}/resources)
+
+target_include_directories(sample.app.wasm
+   PUBLIC
+   ${CMAKE_CURRENT_SOURCE_DIR}/include)
+
+set_target_properties(sample.app.wasm
+   PROPERTIES
+   RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}")
