@@ -10,7 +10,7 @@ void app::randfromstr(string seed_user1, string seed_user2) {
     print("\n----------------");
     
     print("\nstr1: ", seed_user1.c_str());
-    print("\nstr1: ", seed_user2.c_str());
+    print("\nstr2: ", seed_user2.c_str());
     
     print("\n----------------");
     
