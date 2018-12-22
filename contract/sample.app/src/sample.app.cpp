@@ -22,11 +22,20 @@ void app::randfromstr(string seed_user1, string seed_user2) {
 }
 
 void app::randfromhash(checksum256 hash_user1, checksum256 hash_user2) {
-    uint32_t num = 0;
-    hash_combine(num, sha256_to_hex(hash_user1));
-    hash_combine(num, sha256_to_hex(hash_user2));
+    uint32_t hash_num = 0;
+    hash_combine(hash_num, sha256_to_hex(hash_user1));
+    hash_combine(hash_num, sha256_to_hex(hash_user2));
     
-    print("\nnumber: ", num);
+    print("\nhash number: ", hash_num);
+    
+    auto s = hash_num % 10; 
+    auto t = hash_num << s;
+
+    uint32_t num = t / 10000000;
+    print("\nnum: ", num);
+
+    auto map_result = map(0, 255, 0, 999, num);
+    print("\nmap_result: ", map_result);
 }
 
 EOSIO_DISPATCH(sample::app, (randfromhash)(randfromstr))

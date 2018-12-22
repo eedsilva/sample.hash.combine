@@ -6,6 +6,11 @@ using namespace eosio;
 using namespace std;
 
 namespace sample {
+    
+    uint32_t map(uint32_t min, uint32_t max, uint32_t min_rang, uint32_t max_rang, uint32_t num) {
+         return  num * (max - min) / (max_rang - min_rang);
+    }
+
     string sha256_to_hex(const checksum256 &sha256) {
         std::string r;
         uint32_t len = sizeof(sha256.data());    
