@@ -2,11 +2,17 @@
 #include <eosiolib/types.h>
 #include <eosiolib/eosio.hpp>
 
+#define MAX_INT 65535
+
 using namespace eosio;
 using namespace std;
 
 namespace sample {
-    
+    void to_16bits(uint32_t num) {
+        print("\n16 bits:");
+        for(int i = 15; i >= 0; i--) cout<<((num >> i) & 1);
+    }
+
     uint32_t map(uint32_t min, uint32_t max, uint32_t min_rang, uint32_t max_rang, uint32_t num) {
          return  num * (max - min) / (max_rang - min_rang);
     }
@@ -20,7 +26,7 @@ namespace sample {
         for (uint32_t i = 0; i < len; ++i) (r += to_hex[(c[i] >> 4)]) += to_hex[(c[i] & 0x0f)];
         return r;
     }
-
+    
     // copied from boost https://www.boost.org/
     template <class T> inline void hash_combine(uint32_t &seed, const T &v) {
         std::hash<T> hasher;

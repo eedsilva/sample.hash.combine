@@ -17,6 +17,5 @@ namespace sample {
 
         [[eosio::action]]
         void randfromhash(checksum256 hash_user1, checksum256 hash_user2);
-        
     };
 }

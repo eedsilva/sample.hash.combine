@@ -28,14 +28,16 @@ void app::randfromhash(checksum256 hash_user1, checksum256 hash_user2) {
     
     print("\nhash number: ", hash_num);
     
-    auto s = hash_num % 10; 
+    auto s = hash_num % 100; 
     auto t = hash_num << s;
 
-    uint32_t num = t / 10000000;
+    uint32_t num = t / 100000;
     print("\nnum: ", num);
 
-    auto map_result = map(0, 255, 0, 999, num);
+    uint32_t map_result = map(0, MAX_INT, 0, 99999, num);
     print("\nmap_result: ", map_result);
+    
+    to_16bits(map_result);
 }
 
 EOSIO_DISPATCH(sample::app, (randfromhash)(randfromstr))
