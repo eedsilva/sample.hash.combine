@@ -69,7 +69,7 @@ class App extends Component {
         hash_user2: rand_str4.toString(crypto.enc.Hex)
       }));
     
-    await this.state.scatterBridge.sendTx(actions);
+    console.log(await this.state.scatterBridge.sendTx(actions));
   }
 
   render() {

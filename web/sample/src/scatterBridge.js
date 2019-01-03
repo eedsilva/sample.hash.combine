@@ -31,7 +31,7 @@ export default class ScatterBridge {
 
   async sendTx(actions) {
     if(actions.length) {
-      await this.eosApi.transact({
+      return await this.eosApi.transact({
         actions: actions
       }, {blocksBehind: 3, expireSeconds: 30 });
     }

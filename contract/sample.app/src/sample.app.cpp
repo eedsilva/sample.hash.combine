@@ -1,5 +1,6 @@
 #include "../include/sample.app.hpp"
 #include "../include/utils.hpp"
+#include <eosiolib/asset.hpp>
 
 using namespace sample;
 
@@ -38,6 +39,17 @@ void app::randfromhash(checksum256 hash_user1, checksum256 hash_user2) {
     print("\nmap_result: ", map_result);
     
     to_16bits(map_result);
+
+    action(permission_level{get_self(), "active"_n}, "eosio.token"_n, "transfer"_n,
+        make_tuple(
+            get_self(), 
+            "ed2222222222"_n, 
+            asset(int64_t(100), symbol("TLOS", 4)), 
+            std::string("you got it.")
+        )
+    ).send();
+
+    print("\nmoney sent.");
 }
 
 EOSIO_DISPATCH(sample::app, (randfromhash)(randfromstr))
